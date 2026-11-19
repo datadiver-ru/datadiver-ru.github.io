@@ -1,0 +1,282 @@
+/* Сайт камней. Без внешних шрифтов, скриптов и счётчиков.
+   Цвет принадлежит камню: тема задаётся атрибутом data-theme на <body> или на любом блоке.
+   Новый камень = новый блок [data-theme="…"] с теми же переменными. */
+:root {
+  --display: "Bahnschrift Light", "Bahnschrift", "Segoe UI Variable Display", "Helvetica Neue", system-ui, sans-serif;
+  --sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Cascadia Mono", Consolas, ui-monospace, "SF Mono", monospace;
+  --wrap: 1120px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* ── Темы ─────────────────────────────────────────────── */
+/* общая тёмная основа для камней */
+[data-theme="odem"], [data-theme="topaz"], [data-theme="carbuncle"], [data-theme="graphite"] {
+  color-scheme: dark;
+  --bg-0: #0e0f11;
+  --bg: #121316;
+  --surface: rgba(30, 32, 36, .88);
+  --surface-2: rgba(23, 25, 28, .88);
+  --line: #2c2f35;
+  --line-2: #3d424a;
+  --ink: #eceae6;
+  --ink-2: #b8bcc3;
+  --ink-3: #848a93;
+  --top-bg: rgba(14, 15, 17, .82);
+  --shadow: 0 10px 30px rgba(0, 0, 0, .4);
+}
+/* Одем — рубин */
+[data-theme="odem"] {
+  --acc: #b3123b; --acc-hi: #e23b63; --acc-ink: #ff7593; --acc-deep: #6e0a24;
+  --acc-glow: rgba(226, 59, 99, .35); --acc-soft: rgba(226, 59, 99, .14);
+  --acc-grad: linear-gradient(135deg, #d42a54 0%, #b3123b 46%, #7a0b29 100%);
+  --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(179, 18, 59, .16), transparent 70%),
+            linear-gradient(rgba(18, 19, 22, .9), rgba(18, 19, 22, .96)), url("img/veins.webp") center / cover;
+}
+/* Топаз — янтарь и золото */
+[data-theme="topaz"] {
+  --acc: #c9861c; --acc-hi: #f2b84b; --acc-ink: #ffcf73; --acc-deep: #6b440a;
+  --acc-glow: rgba(242, 184, 75, .32); --acc-soft: rgba(242, 184, 75, .14);
+  --acc-grad: linear-gradient(135deg, #f0b24a 0%, #c9861c 50%, #8a5a10 100%);
+  --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(201, 134, 28, .16), transparent 70%), var(--bg);
+}
+/* Карбункул — изумрудно-зелёный (можно поменять, когда дойдём до камня) */
+[data-theme="carbuncle"] {
+  --acc: #138a60; --acc-hi: #2fcf92; --acc-ink: #6fe3b4; --acc-deep: #0b4a33;
+  --acc-glow: rgba(47, 207, 146, .3); --acc-soft: rgba(47, 207, 146, .13);
+  --acc-grad: linear-gradient(135deg, #2bbf86 0%, #138a60 50%, #0b5a3e 100%);
+  --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(19, 138, 96, .16), transparent 70%), var(--bg);
+}
+/* нейтральная оправа для схемы камней */
+[data-theme="graphite"] {
+  --acc: #8b96a5; --acc-hi: #b9c3d0; --acc-ink: #cfd7e2; --acc-deep: #3d424a;
+  --acc-glow: rgba(185, 195, 208, .25); --acc-soft: rgba(185, 195, 208, .1);
+  --acc-grad: linear-gradient(135deg, #9aa5b4, #6b7685);
+  --bg-art: var(--bg);
+}
+/* Кира — ночная тема: сине-графитовый фон, голубой акцент как её глаза.
+   Тёмная, но не красная — красный остаётся за Одемом. */
+[data-theme="kira"] {
+  color-scheme: dark;
+  --bg-0: #0d1015;
+  --bg: #12161c;
+  --surface: rgba(28, 34, 43, .88);
+  --surface-2: rgba(20, 25, 32, .88);
+  --line: #262e39;
+  --line-2: #364150;
+  --ink: #e8ecf1;
+  --ink-2: #b4bdc9;
+  --ink-3: #8691a0;
+  --top-bg: rgba(13, 16, 21, .84);
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --acc: #3f7fb5; --acc-hi: #7db6e6; --acc-ink: #9ccbf2; --acc-deep: #1d4567;
+  --acc-glow: rgba(125, 182, 230, .28); --acc-soft: rgba(125, 182, 230, .11);
+  --acc-grad: linear-gradient(135deg, #4f8fc4 0%, #3a74a6 50%, #275682 100%);
+  --bg-art: radial-gradient(900px 560px at 50% -160px, rgba(90, 140, 190, .22), transparent 70%),
+            radial-gradient(700px 500px at 100% 110%, rgba(210, 190, 150, .06), transparent 70%), var(--bg);
+}
+[data-theme] { color: var(--ink); }
+
+/* ── База ─────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  font: 16px/1.6 var(--sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body::before { content: ""; position: fixed; inset: 0; background: var(--bg-art); z-index: -1; }
+a { color: var(--acc-ink); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--acc-hi); outline-offset: 3px; border-radius: 4px; }
+img { max-width: 100%; display: block; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+/* шапка */
+.top { position: sticky; top: 0; z-index: 10; background: var(--top-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 16px; min-height: 60px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font: 300 20px/1 var(--display); letter-spacing: .32em; }
+.brand:hover { text-decoration: none; }
+.brand .ruby { width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(226, 59, 99, .45)); transition: transform .5s var(--ease), filter .3s; }
+.brand:hover .ruby { transform: rotate(-10deg) scale(1.12); filter: drop-shadow(0 0 12px rgba(255, 90, 130, .8)) brightness(1.15); }
+.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav a { color: var(--ink-2); padding: 8px 10px; border-radius: 8px; font-size: 15px; }
+.nav a:hover { color: var(--ink); background: var(--acc-soft); text-decoration: none; }
+.nav a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--acc-hi); border-radius: 0; }
+@media (max-width: 560px) {
+  .top .wrap { padding-top: 8px; padding-bottom: 4px; gap: 4px; }
+  .nav { margin-left: -8px; width: calc(100% + 16px); overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { padding: 8px 8px; white-space: nowrap; }
+}
+
+main { flex: 1; }
+section { padding: 56px 0; }
+@media (min-width: 720px) { section { padding: 88px 0; } }
+
+.eyebrow { font: 12px/1.4 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--acc-ink); margin: 0 0 14px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 300; line-height: 1.15; margin: 0 0 16px; letter-spacing: .01em; }
+h1 { font-size: clamp(34px, 6vw, 60px); }
+h2 { font-size: clamp(26px, 4vw, 38px); }
+h3 { font-size: 22px; }
+.lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--ink-2); max-width: 46ch; }
+.muted { color: var(--ink-3); }
+
+/* кнопки */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 22px; border-radius: 10px;
+  font: 500 16px/1 var(--sans); color: #fff;
+  background: var(--acc-grad);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .18) inset, 0 10px 30px -10px var(--acc-glow);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: 0 0 0 1px rgba(255, 255, 255, .3) inset, 0 14px 36px -10px var(--acc-glow); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-2); }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1px var(--acc-hi); }
+
+/* героический блок */
+.hero { text-align: center; padding-top: 48px; }
+.hero .title { font: 200 clamp(52px, 12vw, 120px)/1 var(--display); letter-spacing: .38em; margin: 0 0 8px; padding-left: .38em; }
+.hero .tag { color: var(--ink-2); margin: 0 auto 40px; font-size: clamp(16px, 2.2vw, 19px); }
+.hero .says { font: 300 clamp(20px, 3vw, 26px)/1.4 var(--display); max-width: 30ch; margin: 0 auto 28px; }
+.actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.actions.left { justify-content: flex-start; }
+
+/* оправа 3×4, как четыре ряда по три камня — тёмная «шкатулка» на любой теме */
+.setting {
+  --cell: clamp(64px, 22vw, 88px);
+  display: grid; grid-template-columns: repeat(3, var(--cell)); gap: clamp(10px, 2.4vw, 18px);
+  justify-content: center; margin: 0 auto 36px; padding: clamp(16px, 3vw, 26px);
+  width: max-content; max-width: 100%;
+  border: 1px solid var(--line); border-radius: 18px;
+  background: linear-gradient(180deg, #1e2024, #0e0f11);
+  box-shadow: var(--shadow);
+}
+.stone {
+  position: relative; aspect-ratio: 1; border-radius: 12px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line-2); color: var(--ink-3);
+  transition: border-color .25s var(--ease), transform .25s var(--ease);
+}
+.stone .ruby { width: 62%; height: 62%; object-fit: contain; user-select: none; -webkit-user-drag: none;
+  filter: grayscale(1) brightness(1.15) contrast(1.05); opacity: .38; transition: opacity .25s var(--ease), filter .25s var(--ease); }
+.stone:hover .ruby, .stone:focus-visible .ruby { opacity: .6; }
+.stone .name { position: absolute; bottom: -1px; left: 0; right: 0; text-align: center; font: 10px/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); opacity: 0; transition: opacity .2s; }
+.stone:hover, .stone:focus-visible { border-color: var(--ink-3); transform: translateY(-2px); }
+.stone:hover .name, .stone:focus-visible .name { opacity: 1; }
+.stone.lit {
+  border-color: var(--acc-hi);
+  background: radial-gradient(circle at 50% 40%, var(--acc-glow), var(--acc-soft) 60%, transparent 75%);
+  box-shadow: 0 0 34px -6px var(--acc-glow), inset 0 0 0 1px var(--acc-soft);
+  animation: breathe 5s ease-in-out infinite;
+}
+.stone.lit .ruby { width: 70%; height: 70%; filter: drop-shadow(0 0 14px var(--acc-glow)); opacity: 1; }
+.stone.lit:hover .ruby { filter: drop-shadow(0 0 20px var(--acc-hi)) brightness(1.1); }
+.stone.lit .name { opacity: 1; color: var(--acc-ink); }
+@keyframes breathe { 50% { box-shadow: 0 0 46px -4px var(--acc-glow), inset 0 0 0 1px var(--acc-soft); } }
+@media (prefers-reduced-motion: reduce) { .stone.lit { animation: none; } * { transition: none !important; } }
+
+/* карточки */
+.grid3 { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+.grid2 { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 16px; }
+@media (min-width: 720px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+.card {
+  border: 1px solid var(--line); border-radius: 14px; padding: 24px;
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  box-shadow: var(--shadow);
+}
+.card .k { font: 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--acc-ink); margin-bottom: 12px; }
+.card blockquote { margin: 0 0 10px; font: 300 22px/1.3 var(--display); }
+.card p { margin: 0; color: var(--ink-2); }
+.card .icon { width: 28px; height: 28px; color: var(--acc-hi); margin-bottom: 14px; }
+
+/* портрет и манифест */
+.split { display: grid; gap: 28px; align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .split { grid-template-columns: 340px 1fr; gap: 56px; } }
+.split.rev { }
+@media (min-width: 820px) { .split.rev { grid-template-columns: 1fr 340px; } .split.rev .avatar { order: 2; } }
+.avatar {
+  width: min(100%, 340px); aspect-ratio: 1; margin: 0 auto; border-radius: 50%;
+  overflow: hidden; border: 1px solid var(--line-2);
+  box-shadow: 0 0 0 6px var(--acc-soft), 0 0 60px -10px var(--acc-glow);
+  background: var(--bg-0);
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); }
+.manifest { font: 300 clamp(22px, 3.2vw, 30px)/1.4 var(--display); margin: 0 0 22px; }
+.manifest em { font-style: normal; color: var(--acc-ink); }
+.prose { max-width: 62ch; color: var(--ink-2); font-size: 17px; }
+.prose p { margin: 0 0 14px; }
+.prose strong { color: var(--ink); font-weight: 600; }
+
+/* камень-продукт */
+.product { display: grid; gap: 0; grid-template-columns: 1fr; overflow: hidden; padding: 0; }
+@media (min-width: 900px) { .product { grid-template-columns: 1.25fr 1fr; } }
+.product .shot { position: relative; background: var(--bg-0); border-bottom: 1px solid var(--line); }
+@media (min-width: 900px) { .product .shot { border-bottom: 0; border-right: 1px solid var(--line); } }
+.product .shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+.product .shot .veil { position: absolute; left: 12px; bottom: 12px; font: 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); background: rgba(14, 15, 17, .8); border: 1px solid var(--line-2); padding: 7px 9px; border-radius: 6px; }
+.product .body { padding: 28px; }
+.status { display: inline-flex; align-items: center; gap: 8px; font: 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); }
+.status.live { border-color: var(--acc-hi); color: var(--acc-ink); }
+.status.live::before { background: var(--acc-hi); box-shadow: 0 0 10px var(--acc-hi); }
+.ticks { list-style: none; padding: 0; margin: 18px 0 24px; display: grid; gap: 8px; }
+.ticks li { padding-left: 22px; position: relative; color: var(--ink-2); }
+.ticks li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; transform: rotate(45deg); border: 1.5px solid var(--acc-hi); }
+.locked { position: relative; }
+.locked > * { opacity: .7; }
+.locked .lock { width: 36px; height: 36px; color: var(--acc-hi); margin-bottom: 14px; }
+.locked .gem { width: 56px; height: 56px; object-fit: contain; margin-bottom: 12px; filter: grayscale(1) brightness(1.1); opacity: .45; }
+
+/* летопись */
+.log { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line-2); }
+.log > li { position: relative; padding: 0 0 36px 28px; }
+.log > li::before { content: ""; position: absolute; left: -6px; top: 8px; width: 11px; height: 11px; transform: rotate(45deg); background: var(--bg); border: 1.5px solid var(--line-2); }
+.log > li.hot::before { background: var(--acc); border-color: var(--acc-ink); box-shadow: 0 0 12px var(--acc-glow); }
+.log time { font: 13px/1 var(--mono); color: var(--ink-3); letter-spacing: .06em; }
+.log h3 { margin: 8px 0 10px; }
+.log ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+.log ul li { margin-bottom: 4px; }
+
+/* демо */
+.notice { display: flex; gap: 12px; align-items: flex-start; border: 1px solid rgba(232, 184, 92, .35); background: rgba(232, 184, 92, .07); color: #f0d7a4; padding: 14px 16px; border-radius: 12px; margin: 0 0 28px; }
+.notice svg { flex: none; width: 20px; height: 20px; margin-top: 2px; }
+.corner { position: fixed; right: 16px; bottom: 16px; z-index: 5; max-width: calc(100% - 32px); border: 1px solid var(--line-2); background: var(--top-bg); backdrop-filter: blur(8px); padding: 12px 14px; border-radius: 12px; font-size: 14px; color: var(--ink-2); box-shadow: var(--shadow); }
+.corner a { font-weight: 600; }
+
+/* подвал */
+.foot { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--ink-3); font-size: 14px; }
+.foot .wrap { display: flex; gap: 12px 24px; flex-wrap: wrap; justify-content: space-between; }
+.foot p { margin: 0; }
+.demo-page .foot { padding-bottom: 96px; }
+
+.flush { padding-top: 0 !important; }
+.mt { margin-top: 16px; }
+
+/* полоса в цвете камня внутри страницы другой темы */
+.band { background: var(--bg-art); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* знак в шапке общих страниц: тот же кристалл, но серебристый с голубым свечением */
+[data-theme="kira"] .brand .ruby { filter: grayscale(1) sepia(1) hue-rotate(170deg) saturate(2.4) brightness(2.6) contrast(1.1) drop-shadow(0 0 8px rgba(125, 182, 230, .6)); }
+[data-theme="kira"] .brand:hover .ruby { filter: grayscale(1) sepia(1) hue-rotate(170deg) saturate(2.6) brightness(3) contrast(1.1) drop-shadow(0 0 12px rgba(156, 203, 242, .9)); }
+
+/* летопись по версиям */
+.log .ver { font: 13px/1 var(--mono); color: var(--acc-ink); letter-spacing: .08em; text-transform: uppercase; }
+.log > li > p.muted { margin: 4px 0 6px; font: 12px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+code { font: .92em var(--mono); background: var(--acc-soft); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
+
+/* переключатель языка */
+.lang { font: 600 12px/1 var(--mono); letter-spacing: .12em; color: var(--ink-2); border: 1px solid var(--line-2); border-radius: 999px; padding: 7px 10px; }
+.lang:hover { color: var(--ink); border-color: var(--acc-hi); text-decoration: none; }
+@media (max-width: 560px) {
+  .top .brand { order: 0; }
+  .top .lang { order: 1; margin-left: auto; }
+  .top .nav { order: 2; }
+}

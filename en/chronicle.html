@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Odem chronicle - version history</title>
+<meta name="description" content="Odem version history: what each version brought and what comes next.">
+<meta property="og:title" content="Odem chronicle - version history">
+<meta property="og:description" content="Odem version history: what each version brought and what comes next.">
+<meta property="og:image" content="../assets/img/social-preview.jpg">
+<meta name="theme-color" content="#121316">
+<link rel="alternate" hreflang="ru" href="../chronicle.html">
+<link rel="alternate" hreflang="en" href="chronicle.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/adamant.css">
+</head>
+<body data-theme="odem">
+<header class="top"><div class="wrap">
+<a class="brand" href="odem.html" aria-label="Odem"><img class="ruby" src="../assets/img/ruby.webp" alt="" width="256" height="256"><span>ODEM</span></a>
+<nav class="nav" aria-label="Sections"><a href="index.html">Home</a><a href="stones.html">Stones</a><a href="odem.html" aria-current="page">Odem</a><a href="adamant.html">Adamant</a><a href="kira.html">Kira</a><a href="demo.html">Demo</a></nav>
+<a class="lang" href="../chronicle.html" hreflang="ru" lang="ru" title="Русский">RU</a>
+</div></header>
+<main id="main">
+<section><div class="wrap">
+<p class="eyebrow">Chronicle</p>
+<h1>How Odem was cut</h1>
+<p class="lead">History by version: what went into each one. New entries appear here with every release.</p>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<ol class="log" reversed>
+<li class="hot"><span class="ver">Version 1.2 · current</span><h3>Crypto, sync and an open core</h3>
+<ul>
+<li>Crypto wallets: accounts in BTC, ETH, USDT and other coins with the right precision, manual rates, revaluation.</li>
+<li>A “Staff payouts by channel” report: cash, bank, transfers, crypto wallets.</li>
+<li>Sync between computers through a shared folder (OneDrive, Yandex Disk, a network share): only ciphertext goes there, one computer writes, a conflict never overwrites data.</li>
+<li>An open security core: encryption, the signed log and Shamir’s scheme as a separate MIT-licensed package.</li>
+<li>A single-computer installer that needs no admin rights, and a one-archive transfer kit.</li>
+<li>Beta: the distribution is sent on request via Telegram <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">@data_diver_ru</a>. Business edition keys are in the Telegram bot <a href="https://t.me/datadiver_shop_bot" rel="noopener noreferrer">@datadiver_shop_bot</a>.</li>
+</ul></li>
+<li><span class="ver">Version 1.1</span><h3>A verifiable audit log</h3>
+<p class="muted">Security</p>
+<ul>
+<li>The audit log is signed with the installation key (Ed25519). An auditor verifies an exported log without a password.</li>
+<li>Access log: who opened what, when and from which address.</li>
+<li>Four-eyes approval for deleting entry documents, templates and recurring operations.</li>
+<li>Restrictions beyond the role: a user can be denied reports, exports, document viewing, reversals.</li>
+<li>The recovery key can be split into parts with Shamir’s scheme (for example, any 2 of 3).</li>
+<li>Before the first run of a new version the program makes a backup by itself.</li>
+</ul>
+<p class="muted mt">Accounting and reports</p>
+<ul>
+<li>Printing and PDF for reports and the journal.</li>
+<li>Russian KUDiR ledger (Ministry of Finance order No. 135n) and simplified-tax return in XML (format 5.09).</li>
+<li>Exports for 1C: “Client-Bank” bank statement and journal entries.</li>
+<li>Import of counterparties, chart of accounts and opening balances from Excel and CSV.</li>
+</ul>
+<p class="muted mt">Operation and packaging</p>
+<ul>
+<li>One-click office server: HTTPS and mandatory 2FA set themselves up.</li>
+<li>English interface, launch from a shortcut.</li>
+<li>Free edition with full protection: 1 company and up to 3 users.</li>
+</ul></li>
+<li><span class="ver">Version 1.0</span><h3>The first stone</h3>
+<ul>
+<li>Double-entry bookkeeping, multiple companies and currencies, user roles.</li>
+<li>Encryption of all data on disk, 2FA, audit log, backups.</li>
+<li>Taxes for Russia, Kazakhstan, Belarus, the US and the EU; documents attached to entries.</li>
+<li>Operation on a local network.</li>
+</ul></li>
+</ol>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<p class="eyebrow">What’s next</p>
+<h2>Plans without promised dates</h2>
+<div class="grid3">
+<div class="card"><div class="k">Odem</div><p>Encrypted sync between devices: only ciphertext leaves the machine.</p></div>
+<div class="card"><div class="k">Topaz</div><p>The next stone - closed software for lawyers on the same core.</p></div>
+<div class="card"><div class="k">Carbuncle</div><p>A stone for notaries.</p></div>
+</div>
+<p class="muted mt">Found a bug or missing a feature? Write to us - that is how the chronicle grows.</p>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<p>The core will be open. Privacy is free.</p>
+<p>Contact: <a href="mailto:data.diver.ru@gmail.com">data.diver.ru@gmail.com</a> · <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">Telegram @data_diver_ru</a></p>
+<p>Follow: <a href="https://t.me/datadiver_ru" rel="noopener noreferrer">Telegram channel (RU)</a> · <a href="https://www.linkedin.com/in/datadiverru" rel="noopener noreferrer">LinkedIn</a></p>
+<p>No trackers, no cookies, no external requests.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Летопись Одема - история версий</title>
+<meta name="description" content="История версий Одема: что сделано в каждой версии и что дальше.">
+<meta property="og:title" content="Летопись Одема - история версий">
+<meta property="og:description" content="История версий Одема: что сделано в каждой версии и что дальше.">
+<meta property="og:image" content="assets/img/social-preview.jpg">
+<meta name="theme-color" content="#121316">
+<link rel="alternate" hreflang="ru" href="chronicle.html">
+<link rel="alternate" hreflang="en" href="en/chronicle.html">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/adamant.css">
+</head>
+<body data-theme="odem">
+<header class="top"><div class="wrap">
+<a class="brand" href="odem.html" aria-label="Одем"><img class="ruby" src="assets/img/ruby.webp" alt="" width="256" height="256"><span>ОДЕМ</span></a>
+<nav class="nav" aria-label="Разделы"><a href="index.html">Главная</a><a href="stones.html">Камни</a><a href="odem.html" aria-current="page">Одем</a><a href="adamant.html">Адамант</a><a href="kira.html">Кира</a><a href="demo.html">Демо</a></nav>
+<a class="lang" href="en/chronicle.html" hreflang="en" lang="en" title="English">EN</a>
+</div></header>
+<main id="main">
+<section><div class="wrap">
+<p class="eyebrow">Летопись</p>
+<h1>Как огранялся Одем</h1>
+<p class="lead">История по версиям: что вошло в каждую. Новые записи появляются здесь с каждым выпуском.</p>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<ol class="log" reversed>
+<li class="hot"><span class="ver">Версия 1.2 · текущая</span><h3>Крипта, синхронизация и открытое ядро</h3>
+<ul>
+<li>Криптокошельки: счета в BTC, ETH, USDT и других монетах с точностью валюты, курсы вручную, переоценка.</li>
+<li>Отчёт «Выплаты сотрудникам по каналам»: касса, банк, переводы, криптокошельки.</li>
+<li>Синхронизация между компьютерами через общую папку (OneDrive, Яндекс Диск, сетевая папка): туда уходит только шифр, пишет один компьютер, конфликт не перезапишет данные.</li>
+<li>Открытое ядро безопасности: шифрование, подписанный журнал и схема Шамира - отдельным пакетом с лицензией MIT.</li>
+<li>Установщик на один компьютер без прав администратора и комплект для переноса одним архивом.</li>
+<li>Бета: дистрибутив - по запросу в Telegram <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">@data_diver_ru</a>. Ключ версии «Бизнес» - в боте <a href="https://t.me/datadiver_shop_bot" rel="noopener noreferrer">@datadiver_shop_bot</a>.</li>
+</ul></li>
+<li><span class="ver">Версия 1.1</span><h3>Проверяемый журнал</h3>
+<p class="muted">Безопасность</p>
+<ul>
+<li>Журнал аудита подписывается ключом установки (Ed25519). Аудитор проверяет выгрузку журнала без пароля.</li>
+<li>Журнал доступа: кто, когда, с какого адреса и что открывал.</li>
+<li>«Четыре глаза» для удаления документов к проводкам, шаблонов и регулярных операций.</li>
+<li>Ограничения сверх роли: можно запретить пользователю отчёты, выгрузки, просмотр документов, сторно.</li>
+<li>Ключ восстановления делится на части по схеме Шамира (например, любые 2 из 3).</li>
+<li>Перед первым запуском новой версии программа сама делает резервную копию.</li>
+</ul>
+<p class="muted mt">Учёт и отчёты</p>
+<ul>
+<li>Печать и PDF для отчётов и журнала.</li>
+<li>КУДиР по форме приказа Минфина № 135н, декларация по УСН в XML (формат 5.09).</li>
+<li>Выгрузки для 1С: банковская выписка «Клиент-банк» и проводки.</li>
+<li>Загрузка контрагентов, плана счетов и остатков из Excel и CSV.</li>
+</ul>
+<p class="muted mt">Работа и упаковка</p>
+<ul>
+<li>Сервер для офиса в один щелчок: HTTPS и обязательная 2FA настраиваются сами.</li>
+<li>Английский интерфейс, запуск ярлыком.</li>
+<li>Бесплатная версия с полной защитой: 1 компания и до 3 пользователей.</li>
+</ul></li>
+<li><span class="ver">Версия 1.0</span><h3>Первый камень</h3>
+<ul>
+<li>Двойная запись, несколько компаний и валют, роли пользователей.</li>
+<li>Шифрование всех данных на диске, 2FA, журнал аудита, резервные копии.</li>
+<li>Налоги РФ, Казахстана, Беларуси, США и ЕС; документы к проводкам.</li>
+<li>Работа в локальной сети.</li>
+</ul></li>
+</ol>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<p class="eyebrow">Что дальше</p>
+<h2>Планы без обещанных дат</h2>
+<div class="grid3">
+<div class="card"><div class="k">Одем</div><p>Зашифрованная синхронизация между устройствами: наружу уходит только шифр.</p></div>
+<div class="card"><div class="k">Топаз</div><p>Следующий камень - закрытая программа для юристов на том же ядре.</p></div>
+<div class="card"><div class="k">Карбункул</div><p>Камень для нотариусов.</p></div>
+</div>
+<p class="muted mt">Нашли ошибку или не хватает функции? Напишите - так и пополняется летопись.</p>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<p>Ядро будет открыто. Приватность бесплатна.</p>
+<p>Связь: <a href="mailto:data.diver.ru@gmail.com">data.diver.ru@gmail.com</a> · <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">Telegram @data_diver_ru</a></p>
+<p>Читать: <a href="https://t.me/datadiver_ru" rel="noopener noreferrer">канал «Кира · Data Diver»</a> · <a href="https://www.linkedin.com/in/datadiverru" rel="noopener noreferrer">LinkedIn</a></p>
+<p>Сайт без счётчиков, cookies и внешних запросов.</p>
+</div></footer>
+</body>
+</html>

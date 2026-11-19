@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Odem - accounting that cannot be read from outside</title>
+<meta name="description" content="Odem, the first stone: closed accounting software with encryption, a signed audit log and offline operation.">
+<meta property="og:title" content="Odem - accounting that cannot be read from outside">
+<meta property="og:description" content="Odem, the first stone: closed accounting software with encryption, a signed audit log and offline operation.">
+<meta property="og:image" content="../assets/img/social-preview.jpg">
+<meta name="theme-color" content="#121316">
+<link rel="alternate" hreflang="ru" href="../odem.html">
+<link rel="alternate" hreflang="en" href="odem.html">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/adamant.css">
+</head>
+<body data-theme="odem">
+<header class="top"><div class="wrap">
+<a class="brand" href="odem.html" aria-label="Odem"><img class="ruby" src="../assets/img/ruby.webp" alt="" width="256" height="256"><span>ODEM</span></a>
+<nav class="nav" aria-label="Sections"><a href="index.html">Home</a><a href="stones.html">Stones</a><a href="odem.html" aria-current="page">Odem</a><a href="adamant.html">Adamant</a><a href="kira.html">Kira</a><a href="demo.html">Demo</a></nav>
+<a class="lang" href="../odem.html" hreflang="ru" lang="ru" title="Русский">RU</a>
+</div></header>
+<main id="main">
+<section class="hero"><div class="wrap">
+<p class="eyebrow">The first stone</p>
+<h1 class="title">ODEM</h1>
+<p class="tag">Born of fire, became protection.</p>
+<div class="actions">
+<a class="btn" href="demo.html">Open the demo</a>
+<a class="btn ghost" href="chronicle.html">Chronicle</a>
+</div>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<article class="card product">
+<div class="shot"><img src="../assets/img/odem-screen.webp" alt="The Odem app window with data hidden by a filter" width="1440" height="900" loading="lazy"><span class="veil">Data hidden</span></div>
+<div class="body">
+<span class="status live">Beta · version 1.2.0</span>
+<h2 class="mt">Accounting that cannot be read from outside</h2>
+<ul class="ticks">
+<li>Double-entry bookkeeping, multiple companies and currencies; taxes for Russia, Kazakhstan and Belarus.</li>
+<li>Data on disk is encrypted (AES-256-GCM); the key lives only in memory.</li>
+<li>The audit log is signed (Ed25519) and an auditor can verify it without a password.</li>
+<li>2FA, four-eyes approval, recovery key split with Shamir’s scheme.</li>
+<li>Russian tax reporting: KUDiR ledger, simplified-tax return in XML, exports for 1C.</li>
+<li>Crypto wallets (BTC, ETH, USDT and more) and a report on staff payouts by channel: cash, bank, transfers, crypto.</li>
+<li>Sync between computers through a shared folder: only ciphertext goes there.</li>
+<li>One computer or an office network over HTTPS.</li>
+</ul>
+</div>
+</article>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Check it yourself</p>
+<h2>Trust you can verify</h2>
+<p class="lead">We don’t ask you to take our word for it. Here is what you can check on your own.</p>
+<div class="grid2">
+<div class="card"><div class="k">Audit log</div><p>Every entry is signed (Ed25519) and chained to the previous one. The distribution includes <code>tools/verify-audit.js</code>: an auditor verifies an exported log without a password and without access to the data. Any forged, deleted or reordered entry shows up.</p></div>
+<div class="card"><div class="k">Automated tests</div><p>77 automated tests: encryption and key slots, brute-force protection, 2FA, permissions and four-eyes approval, audit-log signatures and their external verification, Shamir’s scheme, rollback detection, HTTPS with device certificates, security headers.</p></div>
+<div class="card"><div class="k">What it protects against</div><p>A stolen disk, copy or backup archive is useless without a password (AES-256-GCM, key derived from passwords with scrypt, held only in memory). Neither the vendor nor any external service gets data or keys. Rolling the data back to an old copy is detected.</p></div>
+<div class="card"><div class="k">What it doesn’t protect against - honestly</div><p>An administrator of the computer where the vault is open can read the process memory. Malware on a user’s computer sees what the user sees. Exported files (CSV, XML, PDF) are not encrypted.</p></div>
+</div>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<p class="eyebrow">Approach</p>
+<div class="prose">
+<p>Odem has <strong>not a single third-party library</strong>: only Node.js and its built-in cryptography. That means no supply-chain attacks through other people’s packages, and everything the program does with data is written in its own code - we will open its core for review.</p>
+<p>The app never calls out: no analytics, no cloud, no online updates. The only exception is switched on by the administrator: downloading official exchange rates.</p>
+</div>
+</div></section>
+
+<section><div class="wrap split">
+<div class="avatar"><img src="../assets/img/kira-keeper.webp" alt="Kira as the keeper of the stones: a dark cloak with ruby embroidery" width="512" height="512"></div>
+<div>
+<p class="eyebrow">Keeper of the stone</p>
+<p class="manifest">Kira guards Odem. The key to your data is <em>yours alone</em>: not the vendor’s, not the cloud’s, not even hers.</p>
+<p class="muted">The free edition is as secure as the full one: 1 company and up to 3 users, with no security cut.</p>
+<p class="muted">The Business edition covers 5 companies and 20 users. Get a key from the Telegram bot <a href="https://t.me/datadiver_shop_bot" rel="noopener noreferrer">@datadiver_shop_bot</a>: 500 ⭐ a month or 5000 ⭐ a year, delivered right after payment.</p>
+<p class="muted">Version 1.2.0 is a beta for Windows 10 and 11. For now the distribution is sent personally: message <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">@data_diver_ru</a> on Telegram. While it is a beta, keep your current accounting in parallel.</p>
+</div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<p>The core will be open. Privacy is free.</p>
+<p>Contact: <a href="mailto:data.diver.ru@gmail.com">data.diver.ru@gmail.com</a> · <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">Telegram @data_diver_ru</a></p>
+<p>Follow: <a href="https://t.me/datadiver_ru" rel="noopener noreferrer">Telegram channel (RU)</a> · <a href="https://www.linkedin.com/in/datadiverru" rel="noopener noreferrer">LinkedIn</a></p>
+<p>No trackers, no cookies, no external requests.</p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* Адамант - алмаз: холодный графит и ледяной блеск.
+   Черновик: файл попадает на сайт только вместе с Адамантом (RELEASED в tools/build-pages.py). */
+[data-theme="adamant"] {
+  color-scheme: dark;
+  --bg-0: #0c0f13;
+  --bg: #11151a;
+  --surface: rgba(28, 33, 40, .88);
+  --surface-2: rgba(19, 23, 29, .88);
+  --line: #262d36;
+  --line-2: #38424e;
+  --ink: #eef2f6;
+  --ink-2: #bcc5cf;
+  --ink-3: #8a94a0;
+  --top-bg: rgba(12, 15, 19, .84);
+  --shadow: 0 10px 30px rgba(0, 0, 0, .4);
+  --acc: #6f8faa; --acc-hi: #cfe3f5; --acc-ink: #e2effb; --acc-deep: #2e4254;
+  --acc-glow: rgba(205, 228, 250, .3); --acc-soft: rgba(205, 228, 250, .1);
+  --acc-grad: linear-gradient(135deg, #7e9db8 0%, #56748f 50%, #364d62 100%);
+  --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(200, 225, 250, .14), transparent 70%),
+            linear-gradient(rgba(17, 21, 26, .84), rgba(17, 21, 26, .93)), url("img/vault.webp") center bottom / cover;
+}
+.brand .diamond { width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(205, 228, 250, .45)); transition: transform .5s var(--ease), filter .3s; }
+.brand:hover .diamond { transform: rotate(-10deg) scale(1.12); filter: drop-shadow(0 0 12px rgba(225, 240, 255, .8)) brightness(1.1); }
+.stone.lit .diamond { width: 70%; height: 70%; object-fit: contain; filter: drop-shadow(0 0 14px var(--acc-glow)); }
+.stone.lit:hover .diamond { filter: drop-shadow(0 0 20px var(--acc-hi)) brightness(1.08); }
+.product .shot.art { display: grid; place-items: center; min-height: 260px; overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, rgba(205, 228, 250, .16), transparent 62%), var(--bg-0); }
+.product .shot.art img { width: auto; height: auto; max-width: 56%; max-height: 230px; object-fit: contain; filter: drop-shadow(0 0 30px var(--acc-glow)); }
+.purity { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+.purity li { font: 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 8px 11px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-3); }
+.purity li:last-child { border-color: var(--acc-hi); color: var(--acc-ink); box-shadow: 0 0 14px -4px var(--acc-glow); }
+.dl { margin-top: 22px; }
+.dl .meta { margin: 12px 0 0; font: 13px/1.6 var(--mono); color: var(--ink-3); word-break: break-all; }
+.note { border-left: 2px solid var(--acc-hi); padding: 4px 0 4px 16px; color: var(--ink-2); margin: 18px 0 0; }
+.duo { align-items: center; gap: 28px; margin-top: 0; }
+.product + .product { margin-top: 16px; }
+.card .k .tier { display: inline-block; margin-left: 8px; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--acc-hi); font-size: 10px; letter-spacing: .08em; color: var(--acc-ink); vertical-align: 1px; }
+.card .ticks { margin: 0 0 14px; }
+.dl .meta + .meta { margin-top: 6px; }
+.wide-shot { margin: 16px 0 0; position: relative; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); background: var(--bg-0); }
+.wide-shot img { display: block; width: 100%; height: auto; }
+.wide-shot .veil { position: absolute; left: 12px; bottom: 12px; font: 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); background: rgba(14, 15, 17, .8); border: 1px solid var(--line-2); padding: 7px 9px; border-radius: 6px; }

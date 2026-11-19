@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Одем - бухгалтерия, которую невозможно прочитать извне</title>
+<meta name="description" content="Одем - первый камень: закрытая бухгалтерия с шифрованием, подписанным журналом и работой без интернета.">
+<meta property="og:title" content="Одем - бухгалтерия, которую невозможно прочитать извне">
+<meta property="og:description" content="Одем - первый камень: закрытая бухгалтерия с шифрованием, подписанным журналом и работой без интернета.">
+<meta property="og:image" content="assets/img/social-preview.jpg">
+<meta name="theme-color" content="#121316">
+<link rel="alternate" hreflang="ru" href="odem.html">
+<link rel="alternate" hreflang="en" href="en/odem.html">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/adamant.css">
+</head>
+<body data-theme="odem">
+<header class="top"><div class="wrap">
+<a class="brand" href="odem.html" aria-label="Одем"><img class="ruby" src="assets/img/ruby.webp" alt="" width="256" height="256"><span>ОДЕМ</span></a>
+<nav class="nav" aria-label="Разделы"><a href="index.html">Главная</a><a href="stones.html">Камни</a><a href="odem.html" aria-current="page">Одем</a><a href="adamant.html">Адамант</a><a href="kira.html">Кира</a><a href="demo.html">Демо</a></nav>
+<a class="lang" href="en/odem.html" hreflang="en" lang="en" title="English">EN</a>
+</div></header>
+<main id="main">
+<section class="hero"><div class="wrap">
+<p class="eyebrow">Первый камень</p>
+<h1 class="title">ОДЕМ</h1>
+<p class="tag">Рождён из огня, стал защитой.</p>
+<div class="actions">
+<a class="btn" href="demo.html">Открыть демо</a>
+<a class="btn ghost" href="chronicle.html">Летопись</a>
+</div>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<article class="card product">
+<div class="shot"><img src="assets/img/odem-screen.webp" alt="Окно программы Одем, данные скрыты фильтром" width="1440" height="900" loading="lazy"><span class="veil">Данные скрыты</span></div>
+<div class="body">
+<span class="status live">Бета · версия 1.2.0</span>
+<h2 class="mt">Бухгалтерия, которую невозможно прочитать извне</h2>
+<ul class="ticks">
+<li>Двойная запись, несколько компаний и валют, налоги РФ, КЗ, РБ.</li>
+<li>Данные на диске зашифрованы (AES-256-GCM), ключ живёт только в памяти.</li>
+<li>Журнал аудита подписан (Ed25519) и проверяется аудитором без пароля.</li>
+<li>2FA, «четыре глаза», ключ восстановления по схеме Шамира.</li>
+<li>КУДиР, декларация по УСН в XML, выгрузки для 1С.</li>
+<li>Криптокошельки (BTC, ETH, USDT и др.) и отчёт о выплатах сотрудникам по каналам: касса, банк, переводы, крипта.</li>
+<li>Синхронизация между компьютерами через общую папку: туда уходит только шифр.</li>
+<li>Один компьютер или офисная сеть с HTTPS.</li>
+</ul>
+</div>
+</article>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow">Проверьте сами</p>
+<h2>Доверие, которое можно проверить</h2>
+<p class="lead">Мы не просим верить на слово. Вот что можно проверить самостоятельно.</p>
+<div class="grid2">
+<div class="card"><div class="k">Журнал аудита</div><p>Каждая запись подписана (Ed25519) и связана с предыдущей. В дистрибутив входит <code>tools/verify-audit.js</code>: аудитор проверяет выгрузку журнала без пароля и без доступа к данным. Подделку, удаление или перестановку записи видно.</p></div>
+<div class="card"><div class="k">Автотесты</div><p>77 автотестов: шифрование и слоты ключей, защита от подбора пароля, 2FA, права и «четыре глаза», подписи журнала и их внешняя проверка, схема Шамира, защита от отката данных, HTTPS с сертификатами устройств, заголовки безопасности.</p></div>
+<div class="card"><div class="k">От чего защищает</div><p>Украденный диск, копия или резервный архив без пароля бесполезны (AES-256-GCM, ключ из паролей через scrypt, живёт только в памяти). Поставщик и внешние сервисы не получают ни данных, ни ключей. Откат данных к старой копии обнаруживается.</p></div>
+<div class="card"><div class="k">От чего не защищает - честно</div><p>Администратор компьютера с открытым хранилищем может прочитать память процесса. Вредоносная программа на компьютере видит то же, что пользователь. Выгруженные файлы (CSV, XML, PDF) не шифруются.</p></div>
+</div>
+</div></section>
+
+<section class="flush"><div class="wrap">
+<p class="eyebrow">Подход</p>
+<div class="prose">
+<p>В Одеме <strong>нет ни одной сторонней библиотеки</strong>: только Node.js и его встроенная криптография. Значит, нет и атак через чужие пакеты, а всё, что программа делает с данными, записано в её собственном коде - его ядро мы откроем для проверки.</p>
+<p>Приложение никуда не обращается: ни аналитики, ни облака, ни обновлений из сети. Единственное исключение включает администратор - загрузка официальных курсов валют.</p>
+</div>
+</div></section>
+
+<section><div class="wrap split">
+<div class="avatar"><img src="assets/img/kira-keeper.webp" alt="Кира в образе хранительницы камней: тёмный плащ с рубиновой вышивкой" width="512" height="512"></div>
+<div>
+<p class="eyebrow">Хранительница камня</p>
+<p class="manifest">Одем стережёт Кира. Ключ от данных - <em>только у вас</em>: ни у поставщика, ни у облака, ни у неё.</p>
+<p class="muted">Бесплатная версия защищена так же, как полная: 1 компания и до 3 пользователей, безопасность не урезана.</p>
+<p class="muted">Версия «Бизнес» - 5 компаний и 20 пользователей. Ключ - в боте <a href="https://t.me/datadiver_shop_bot" rel="noopener noreferrer">@datadiver_shop_bot</a>: 500 ⭐ в месяц или 5000 ⭐ в год, приходит сразу после оплаты.</p>
+<p class="muted">Версия 1.2.0 - бета для Windows 10 и 11. Дистрибутив пока выдаём лично: напишите в Telegram <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">@data_diver_ru</a>. Пока это бета, ведите учёт параллельно с привычной программой.</p>
+</div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<p>Ядро будет открыто. Приватность бесплатна.</p>
+<p>Связь: <a href="mailto:data.diver.ru@gmail.com">data.diver.ru@gmail.com</a> · <a href="https://t.me/data_diver_ru" rel="noopener noreferrer">Telegram @data_diver_ru</a></p>
+<p>Читать: <a href="https://t.me/datadiver_ru" rel="noopener noreferrer">канал «Кира · Data Diver»</a> · <a href="https://www.linkedin.com/in/datadiverru" rel="noopener noreferrer">LinkedIn</a></p>
+<p>Сайт без счётчиков, cookies и внешних запросов.</p>
+</div></footer>
+</body>
+</html>
