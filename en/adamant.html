@@ -38,7 +38,7 @@
 <article class="card product">
 <div class="shot"><img src="../assets/img/adamant-screen.webp" alt="The Adamant window: check summary, data hidden by a filter" width="1440" height="900" loading="lazy"><span class="veil">Data hidden</span></div>
 <div class="body">
-<span class="status live">Released · version 1.2.2</span>
+<span class="status live">Released · version 1.2.3</span>
 <h2 class="mt">A security check for Windows and your own network</h2>
 <ul class="ticks">
 <li>Checks from the firewall and BitLocker to sign-in bypass protection.</li>
@@ -46,7 +46,7 @@
 <li>The Guard remembers your system and shows what has changed.</li>
 <li>New in 1.2: browser extensions, risky downloads, ports your router opened to the internet, and one-click program updates.</li>
 <li>One-click fixes: first a preview of the change, then a Windows prompt, always with undo.</li>
-<li>Sends nothing to the internet on its own. Program updates and Telegram happen only if you choose them.</li>
+<li>Sends nothing to the internet on its own. Program updates, the new version check and Telegram happen only if you choose them.</li>
 <li>Everything that protects you is free. One-click install, no administrator rights needed.</li>
 </ul>
 </div>
@@ -109,7 +109,7 @@
 <h2>What Adamant does and doesn't do</h2>
 <div class="grid2">
 <div class="card"><div class="k">Does</div><p>Checks only read settings and logs. A fix is applied after you press Apply and confirm the Windows administrator prompt; previous values are saved and every fix can be undone. BIOS passwords, BitLocker and firmware are never changed by the program - you get step-by-step instructions instead. Program updates and moving files to the Recycle Bin happen only when you press the button.</p></div>
-<div class="card"><div class="k">Doesn't</div><p>Doesn't send anything to the internet on its own: no analytics, no self-updates. Two exceptions, only if you choose them: finding and installing program updates through winget when you press the button, and Telegram notifications if you turned them on. Doesn't scan other people's networks or external addresses. Doesn't read Wi-Fi or auto sign-in passwords. Doesn't replace your antivirus - it checks that it is on and configured.</p></div>
+<div class="card"><div class="k">Doesn't</div><p>Doesn't send anything to the internet on its own: no analytics, no self-updates - the program itself downloads and installs nothing. Three exceptions, only if you choose them: finding and installing program updates through winget when you press the button, “Check for updates” in About (one request to GitHub for the latest version number, with nothing about you or your PC), and Telegram notifications if you turned them on. Doesn't scan other people's networks or external addresses. Doesn't read Wi-Fi or auto sign-in passwords. Doesn't replace your antivirus - it checks that it is on and configured.</p></div>
 </div>
 </div></section>
 
@@ -142,14 +142,14 @@
 <section id="download"><div class="wrap">
 <article class="card">
 <p class="eyebrow">Download</p>
-<h2>Adamant 1.2.2 for Windows</h2>
+<h2>Adamant 1.2.3 for Windows</h2>
 <p class="lead">Download the installer and run it: Adamant installs for the current user, without administrator rights, with shortcuts on the desktop and in Start. Remove it through Settings → Apps; your data stays.</p>
 <div class="dl">
-<div class="actions left"><a class="btn" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.2/Adamant-Setup-1.2.2.exe" rel="noopener noreferrer">Download installer</a><a class="btn ghost" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.2/Adamant-1.2.2-win-x64.zip" rel="noopener noreferrer">.zip archive</a></div>
-<p class="meta">Adamant-Setup-1.2.2.exe · 36.3 MB · SHA-256: 4ae1de399698e253ff13f602f3314f1e6589f192e00e8c67f00a179ec8758c4d</p>
-<p class="meta">Adamant-1.2.2-win-x64.zip · 35.6 MB · SHA-256: 3579172d2421d9fc7022fcbee28ba033de60a947558aa6779954ce1bfe41d5e3<br>The archive holds the same package: extract it and run “Установить Адамант.cmd” (Install Adamant).</p>
+<div class="actions left"><a class="btn" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.3/Adamant-Setup-1.2.3.exe" rel="noopener noreferrer">Download installer</a><a class="btn ghost" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.3/Adamant-1.2.3-win-x64.zip" rel="noopener noreferrer">.zip archive</a></div>
+<p class="meta">Adamant-Setup-1.2.3.exe · 36.3 MB · SHA-256: 3558cde4c4fbdb6bfe95fd8991287f53cb03bfdbf1603a3180a77ed5bb878a78</p>
+<p class="meta">Adamant-1.2.3-win-x64.zip · 35.6 MB · SHA-256: cc85f1b01b1d1c58b9a36c731351884f728ec95091d0292b755f780f6ba46d76<br>The archive holds the same package: extract it and run “Установить Адамант.cmd” (Install Adamant).</p>
 </div>
-<p class="note">The installer is not yet signed with a developer certificate, so Windows SmartScreen will show “Unknown publisher”. Check the file's SHA-256 (in PowerShell: <code>Get-FileHash .\Adamant-Setup-1.2.2.exe</code>), then choose “More info” → “Run anyway”.</p>
+<p class="note">The installer is not yet signed with a developer certificate, so Windows SmartScreen will show “Unknown publisher”. Check the file's SHA-256 (in PowerShell: <code>Get-FileHash .\Adamant-Setup-1.2.3.exe</code>), then choose “More info” → “Run anyway”.</p>
 <p class="note">Already have 1.1? Install 1.2 over it: your settings, reports and full version key are kept. After the update Adamant offers to update the administrator helper, if you have it installed - that takes one Windows prompt.</p>
 <p class="muted mt">Windows, 64-bit. All releases are on <a href="https://github.com/datadiver-ru/adamant/releases" rel="noopener noreferrer">GitHub</a>. The source code is open to read and audit: <a href="https://github.com/datadiver-ru/adamant/blob/main/LICENSE" rel="noopener noreferrer">Adamant License</a>.</p>
 </article>
@@ -175,6 +175,7 @@
 <li>Program updates through winget.</li>
 <li>The real-time Guard, the Alarm button, Telegram notifications.</li>
 <li>1.2.2: ports in plain words, Close with undo, and Close what is not needed.</li>
+<li>1.2.3: “Check for updates” on request, and the key window on any page.</li>
 </ul></li>
 <li><span class="ver">Version 1.1</span><h3>The Guard and drills</h3>
 <ul>
