@@ -149,8 +149,16 @@
 <p class="meta">Adamant-Setup-1.2.3.exe · 36.3 MB · SHA-256: 3558cde4c4fbdb6bfe95fd8991287f53cb03bfdbf1603a3180a77ed5bb878a78</p>
 <p class="meta">Adamant-1.2.3-win-x64.zip · 35.6 MB · SHA-256: cc85f1b01b1d1c58b9a36c731351884f728ec95091d0292b755f780f6ba46d76<br>The archive holds the same package: extract it and run “Установить Адамант.cmd” (Install Adamant).</p>
 </div>
-<p class="note">The installer is not yet signed with a developer certificate, so Windows SmartScreen will show “Unknown publisher”. Check the file's SHA-256 (in PowerShell: <code>Get-FileHash .\Adamant-Setup-1.2.3.exe</code>), then choose “More info” → “Run anyway”.</p>
-<p class="note">Already have 1.1? Install 1.2 over it: your settings, reports and full version key are kept. After the update Adamant offers to update the administrator helper, if you have it installed - that takes one Windows prompt.</p>
+<div class="note howto">
+<p><b>Your browser or Windows shows a warning? That is expected.</b> Adamant is not yet signed with a paid developer certificate, and Windows and browsers warn about any new program that few people have downloaded. The warning itself does not mean the file contains a virus.</p>
+<ol>
+<li><b>The browser blocks the download.</b> Open the downloads list (the arrow at the top right), click the file or the “…” next to it and choose “Keep”. In Edge, then click “Show more” → “Keep anyway”.</li>
+<li><b>A blue window “Windows protected your PC”.</b> Click “More info”, then “Run anyway”. The installer does not ask for administrator rights.</li>
+</ol>
+<p>Do this only with the file from this page or from <a href="https://github.com/datadiver-ru/adamant/releases" rel="noopener noreferrer">GitHub datadiver-ru</a>. If someone sent you Adamant in a chat or it is on another site, do not run it.</p>
+<p class="meta">For advanced users: to check the file was not tampered with, run <code>Get-FileHash .\Adamant-Setup-1.2.3.exe</code> in PowerShell. The result must match the SHA-256 above.</p>
+</div>
+<p class="note">Already have Adamant? Install the new version over it: settings, reports and the full version key are kept. If it offers to update the administrator helper, that takes one Windows prompt. Starting with 1.2.3, you can find new versions with the “Check for updates” button in Settings → About.</p>
 <p class="muted mt">Windows, 64-bit. All releases are on <a href="https://github.com/datadiver-ru/adamant/releases" rel="noopener noreferrer">GitHub</a>. The source code is open to read and audit: <a href="https://github.com/datadiver-ru/adamant/blob/main/LICENSE" rel="noopener noreferrer">Adamant License</a>.</p>
 </article>
 </div></section>

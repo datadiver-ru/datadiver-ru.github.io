@@ -32,6 +32,9 @@
 .dl { margin-top: 22px; }
 .dl .meta { margin: 12px 0 0; font: 13px/1.6 var(--mono); color: var(--ink-3); word-break: break-all; }
 .note { border-left: 2px solid var(--acc-hi); padding: 4px 0 4px 16px; color: var(--ink-2); margin: 18px 0 0; }
+.note.howto ol { margin: 8px 0 10px; padding-left: 22px; display: grid; gap: 6px; }
+.note.howto p { margin: 0 0 8px; }
+.note.howto p:last-child { margin-bottom: 0; }
 .duo { align-items: center; gap: 28px; margin-top: 0; }
 .product + .product { margin-top: 16px; }
 .card .k .tier { display: inline-block; margin-left: 8px; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--acc-hi); font-size: 10px; letter-spacing: .08em; color: var(--acc-ink); vertical-align: 1px; }
