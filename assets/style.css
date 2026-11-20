@@ -11,7 +11,7 @@
 
 /* ── Темы ─────────────────────────────────────────────── */
 /* общая тёмная основа для камней */
-[data-theme="odem"], [data-theme="topaz"], [data-theme="carbuncle"], [data-theme="graphite"] {
+[data-theme="odem"], [data-theme="opal"], [data-theme="graphite"] {
   color-scheme: dark;
   --bg-0: #0e0f11;
   --bg: #121316;
@@ -33,19 +33,12 @@
   --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(179, 18, 59, .16), transparent 70%),
             linear-gradient(rgba(18, 19, 22, .9), rgba(18, 19, 22, .96)), url("img/veins.webp") center / cover;
 }
-/* Топаз — янтарь и золото */
-[data-theme="topaz"] {
-  --acc: #c9861c; --acc-hi: #f2b84b; --acc-ink: #ffcf73; --acc-deep: #6b440a;
-  --acc-glow: rgba(242, 184, 75, .32); --acc-soft: rgba(242, 184, 75, .14);
-  --acc-grad: linear-gradient(135deg, #f0b24a 0%, #c9861c 50%, #8a5a10 100%);
-  --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(201, 134, 28, .16), transparent 70%), var(--bg);
-}
-/* Карбункул — изумрудно-зелёный (можно поменять, когда дойдём до камня) */
-[data-theme="carbuncle"] {
-  --acc: #138a60; --acc-hi: #2fcf92; --acc-ink: #6fe3b4; --acc-deep: #0b4a33;
-  --acc-glow: rgba(47, 207, 146, .3); --acc-soft: rgba(47, 207, 146, .13);
-  --acc-grad: linear-gradient(135deg, #2bbf86 0%, #138a60 50%, #0b5a3e 100%);
-  --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(19, 138, 96, .16), transparent 70%), var(--bg);
+/* Опал — переливы синего и зелёного на тёмном камне */
+[data-theme="opal"] {
+  --acc: #3a7bd5; --acc-hi: #5fd3c6; --acc-ink: #8fe6dc; --acc-deep: #1d3d6b;
+  --acc-glow: rgba(95, 211, 198, .28); --acc-soft: rgba(95, 211, 198, .12);
+  --acc-grad: linear-gradient(135deg, #36c08f 0%, #3a7bd5 50%, #7a4fd0 100%);
+  --bg-art: radial-gradient(900px 520px at 50% -120px, rgba(58, 123, 213, .16), transparent 70%), var(--bg);
 }
 /* нейтральная оправа для схемы камней */
 [data-theme="graphite"] {
@@ -179,6 +172,11 @@ h3 { font-size: 22px; }
 .stone.lit .ruby { width: 70%; height: 70%; filter: drop-shadow(0 0 14px var(--acc-glow)); opacity: 1; }
 .stone.lit:hover .ruby { filter: drop-shadow(0 0 20px var(--acc-hi)) brightness(1.1); }
 .stone.lit .name { opacity: 1; color: var(--acc-ink); }
+/* камень «скоро»: цветной, но без свечения */
+.stone.soon { border-style: dashed; border-color: var(--acc-hi); }
+.stone.soon .ruby { filter: none; opacity: .75; }
+.stone.soon:hover .ruby, .stone.soon:focus-visible .ruby { opacity: 1; }
+.stone.soon .name { color: var(--acc-ink); }
 @keyframes breathe { 50% { box-shadow: 0 0 46px -4px var(--acc-glow), inset 0 0 0 1px var(--acc-soft); } }
 @media (prefers-reduced-motion: reduce) { .stone.lit { animation: none; } * { transition: none !important; } }
 
@@ -234,6 +232,8 @@ h3 { font-size: 22px; }
 .locked > * { opacity: .7; }
 .locked .lock { width: 36px; height: 36px; color: var(--acc-hi); margin-bottom: 14px; }
 .locked .gem { width: 56px; height: 56px; object-fit: contain; margin-bottom: 12px; filter: grayscale(1) brightness(1.1); opacity: .45; }
+.locked.soon > * { opacity: 1; }
+.locked.soon .gem { width: 72px; height: 72px; filter: drop-shadow(0 0 12px var(--acc-glow)); opacity: 1; }
 
 /* летопись */
 .log { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line-2); }
