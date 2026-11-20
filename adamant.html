@@ -38,7 +38,7 @@
 <article class="card product">
 <div class="shot"><img src="assets/img/adamant-screen.webp" alt="Окно Адаманта: сводка проверки, данные скрыты фильтром" width="1440" height="900" loading="lazy"><span class="veil">Данные скрыты</span></div>
 <div class="body">
-<span class="status live">Вышел · версия 1.2.5</span>
+<span class="status live">Вышел · версия 1.2.6</span>
 <h2 class="mt">Проверка защиты Windows и своей сети</h2>
 <ul class="ticks">
 <li>Проверки от брандмауэра и BitLocker до защиты от входа в обход пароля.</li>
@@ -142,12 +142,12 @@
 <section id="download"><div class="wrap">
 <article class="card">
 <p class="eyebrow">Скачать</p>
-<h2>Адамант 1.2.5 для Windows</h2>
+<h2>Адамант 1.2.6 для Windows</h2>
 <p class="lead">Скачайте установщик и запустите его: программа встанет для текущего пользователя, без прав администратора, с ярлыками на рабочем столе и в «Пуске». Удаление - через «Параметры» → «Приложения», ваши данные при этом остаются.</p>
 <div class="dl">
-<div class="actions left"><a class="btn" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.5/Adamant-Setup-1.2.5.exe" rel="noopener noreferrer">Скачать установщик</a><a class="btn ghost" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.5/Adamant-1.2.5-win-x64.zip" rel="noopener noreferrer">Архив .zip</a></div>
-<p class="meta">Adamant-Setup-1.2.5.exe · 36,4 МБ · SHA-256: 8007dac789bafa8261aec04c6fe4732c2058403a0e5c0ba6ff7dd871bbd40eb5</p>
-<p class="meta">Adamant-1.2.5-win-x64.zip · 35,8 МБ · SHA-256: f92577111839a4b41dd73a89af106741249f1da9af273eca26cb48d1f4184f19<br>Внутри архива - тот же комплект: распакуйте и запустите «Установить Адамант.cmd».</p>
+<div class="actions left"><a class="btn" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.6/Adamant-Setup-1.2.6.exe" rel="noopener noreferrer">Скачать установщик</a><a class="btn ghost" href="https://github.com/datadiver-ru/adamant/releases/download/v1.2.6/Adamant-1.2.6-win-x64.zip" rel="noopener noreferrer">Архив .zip</a></div>
+<p class="meta">Adamant-Setup-1.2.6.exe · 36,5 МБ · SHA-256: c69aaad9b71cd21b280de75653c0a7b1f68e19d51fcf824ac3dc061d784a3c95</p>
+<p class="meta">Adamant-1.2.6-win-x64.zip · 35,8 МБ · SHA-256: 5b6db69e99e171c8b8479818471dd726419d49c2aa50d83617c5729ae377613f<br>Внутри архива - тот же комплект: распакуйте и запустите «Установить Адамант.cmd».</p>
 </div>
 <div class="note howto">
 <p><b>Браузер или Windows предупреждают? Это ожидаемо.</b> Адамант пока не подписан платным сертификатом разработчика, а Windows и браузеры предупреждают о любой новой программе, которую скачало мало людей. Само предупреждение не значит, что в файле вирус.</p>
@@ -156,7 +156,7 @@
 <li><b>Синее окно «Система Windows защитила ваш компьютер».</b> Нажмите «Подробнее», затем «Выполнить в любом случае». Прав администратора установщик не просит.</li>
 </ol>
 <p>Так поступайте только с файлом с этой страницы или с <a href="https://github.com/datadiver-ru/adamant/releases" rel="noopener noreferrer">GitHub datadiver-ru</a>. Если Адамант прислали в чате или он лежит на другом сайте, не запускайте его.</p>
-<p class="meta">Для опытных: проверить, что файл не подменили, можно в PowerShell командой <code>Get-FileHash .\Adamant-Setup-1.2.5.exe</code>. Результат должен совпасть с SHA-256 выше.</p>
+<p class="meta">Для опытных: проверить, что файл не подменили, можно в PowerShell командой <code>Get-FileHash .\Adamant-Setup-1.2.6.exe</code>. Результат должен совпасть с SHA-256 выше.</p>
 </div>
 <p class="note">Уже стоит Адамант? Установите новую версию поверх: настройки, отчёты и ключ полной версии сохранятся. Если программа предложит обновить помощника администратора, это одно разрешение Windows. С версии 1.2.3 новую версию можно найти кнопкой «Проверить обновления» в «Настройки» → «О программе».</p>
 <p class="muted mt">Windows, 64 бита. Все выпуски - на <a href="https://github.com/datadiver-ru/adamant/releases" rel="noopener noreferrer">GitHub</a>. Код открыт для просмотра и проверки: <a href="https://github.com/datadiver-ru/adamant/blob/main/LICENSE" rel="noopener noreferrer">лицензия Адаманта</a>.</p>
@@ -186,6 +186,7 @@
 <li>1.2.3: «Проверить обновления» по кнопке и окошко для ключа на любой странице.</li>
 <li>1.2.4: знакомство с Кирой при первом запуске и «Первые шаги» на «Сводке».</li>
 <li>1.2.5: запуск через Adamant.exe вместо скриптов и меньше ложных тревог антивирусов.</li>
+<li>1.2.6: данные Адаманта хранятся зашифрованными, и их можно уничтожить кнопкой «Уничтожить данные».</li>
 </ul></li>
 <li><span class="ver">Версия 1.1</span><h3>Страж и учения</h3>
 <ul>
